@@ -5,10 +5,17 @@ import (
 
 	"github.com/Oden333/TGBot_AvMet/pkg/telegram"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"github.com/spf13/viper"
 )
 
 func main() {
-	bot, err := tgbotapi.NewBotAPI("6909651752:AAEckwkrBXIUPWcluY6NV6uNrb6StJWAg9E")
+	viper.AddConfigPath("configs")
+	viper.SetConfigName("config")
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatal(err)
+	}
+
+	bot, err := tgbotapi.NewBotAPI(viper.GetString("key"))
 	if err != nil {
 		log.Panic(err)
 	}

@@ -68,7 +68,7 @@ func TAFRequest() (string, error) {
 		`ICAO Airport Identifier: %s
 Issued Time: %s
 Valid Period: %s - %s
-TAF: 
+TAF:
 		%s
 		`
 	del := strings.Trim(current.TAFText, "\n")
